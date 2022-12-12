@@ -15,8 +15,7 @@ tkinter.Entry(root, width=70, textvariable=link).place(x=32, y=90)
 
 def video_downloader():
     url = YouTube(str(link.get()))
-    url_filtered_mp4 = url.streams.filter(mime_type="video/mp4").get_by_resolution("720p")
-    video = url.streams[19]
+    url_filtered_mp4 = url.streams.filter(mime_type="video/mp4").get_highest_resolution()
     url_filtered_mp4.download()
     tkinter.Label(root, text='DOWNLOADED', font='arial 15').place(x=180, y=210)
 
