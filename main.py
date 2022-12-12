@@ -19,3 +19,6 @@ def downloader():
     video.download()
     tkinter.Label(root, text='DOWNLOADED', font='arial 15').place(x=180, y=210)
 
+tkinter.Button(root, text='DOWNLOAD', font='arial 15 bold', bg='pale violet red', padx=2,
+               command=downloader).place(x=180, y=150)
+
