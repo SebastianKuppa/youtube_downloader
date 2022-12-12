@@ -13,14 +13,15 @@ tkinter.Label(root, text='Paste link here:', font='arial 15 bold').place(x=160, 
 tkinter.Entry(root, width=70, textvariable=link).place(x=32, y=90)
 
 
-def downloader():
+def video_downloader():
     url = YouTube(str(link.get()))
+    url_filtered_mp4 = url.streams.filter(mime_type="video/mp4").get_by_resolution("720p")
     video = url.streams[19]
-    video.download()
+    url_filtered_mp4.download()
     tkinter.Label(root, text='DOWNLOADED', font='arial 15').place(x=180, y=210)
 
 
 tkinter.Button(root, text='DOWNLOAD', font='arial 15 bold', bg='pale violet red', padx=2,
-               command=downloader).place(x=180, y=150)
+               command=video_downloader).place(x=180, y=150)
 
 root.mainloop()
