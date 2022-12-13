@@ -15,11 +15,12 @@ tkinter.Entry(root, width=70, textvariable=link).place(x=32, y=90)
 
 
 def video_downloader():
+    tkinter.Label(root, text=' '*30, font='arial 15').place(x=180, y=200)
     path = askdirectory()
     url = YouTube(str(link.get()))
     url_filtered_mp4 = url.streams.filter(mime_type="video/mp4").get_highest_resolution()
     url_filtered_mp4.download(output_path=path)
-    tkinter.Label(root, text='DOWNLOADED', font='arial 15').place(x=180, y=210)
+    tkinter.Label(root, text='DOWNLOADED', font='arial 15').place(x=180, y=200)
 
 
 tkinter.Button(root, text='DOWNLOAD', font='arial 15 bold', bg='pale violet red', padx=2,
