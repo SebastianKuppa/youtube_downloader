@@ -29,9 +29,26 @@ def video_downloader():
     tkinter.Label(root, text='DOWNLOADED', font='arial 15').place(x=180, y=200)
 
 
+def mp3_downloader():
+    # added an empty label widget, for deleting the DOWNLOADED Label after starting new download
+    tkinter.Label(root, text=' '*30, font='arial 15').place(x=180, y=200)
+    # opens window for the user to enter the download destination path
+    path = askdirectory()
+    # start downloading the youtube video
+    url = YouTube(str(link.get()))
+    url_filtered_mp4 = url.streams.filter(mime_type="video/mp4").get_highest_resolution()
+    url_filtered_mp4.download(output_path=path)
+    # display when download is finished
+    tkinter.Label(root, text='DOWNLOADED', font='arial 15').place(x=180, y=200)
+
+
 # button for running video_downloader()
 tkinter.Button(root, text='DOWNLOAD', font='arial 15 bold', bg='pale violet red', padx=2,
-               command=video_downloader).place(x=180, y=150)
+               command=video_downloader).place(x=80, y=150)
+
+# button for running mp3_downloader()
+tkinter.Button(root, text='DOWNLOAD MP3', font='arial 15 bold', bg='pale violet red', padx=2,
+               command=mp3_downloader).place(x=230, y=150)
 
 
 if __name__ == '__main__':
